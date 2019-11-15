@@ -73,8 +73,8 @@ int main() {
 		if (c[x] == c[y]) continue;
 		add_c(c[x], c[y]);
 	}
-	printf("缩点之后的森林，点数 %d，边数 %d（可能有重边）\n", dcc, tc / 2);
-	for (int i = 2; i < tc; i++)
+	printf("缩点之后的森林，点数 %d，边数 %d\n", dcc, tc / 2);
+	for (int i = 2; i < tc; i += 2)
 		printf("%d %d\n", vc[i ^ 1], vc[i]);
 }
 
@@ -88,8 +88,8 @@ int main() {
 using namespace std;
 const int SIZE = 100010;
 int head[SIZE], ver[SIZE * 2], Next[SIZE * 2];
-int dfn[SIZE], low[SIZE], stack[SIZE], new_id[SIZE];
-int n, m, tot, num, top, cnt, tc;
+int dfn[SIZE], low[SIZE], stack[SIZE], new_id[SIZE], c[SIZE];
+int n, m, tot, num, root, top, cnt, tc;
 bool cut[SIZE];
 vector<int> dcc[SIZE];
 int hc[SIZE], vc[SIZE * 2], nc[SIZE * 2];
@@ -146,7 +146,7 @@ int main() {
 		if (cut[i]) printf("%d ", i);
 	puts("are cut-vertexes");
 	for (int i = 1; i <= cnt; i++) {
-		printf("e-DCC #%d:", i);
+		printf("v-DCC #%d:", i);
 		for (int j = 0; j < dcc[i].size(); j++)
 			printf(" %d", dcc[i][j]);
 		puts("");
